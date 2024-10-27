@@ -43,6 +43,9 @@ class TCPServer:
         if LOADING_PLUGINS:
             self.load_plugins()
 
+        for plugin in self.plugins:
+            plugin.server_inited()
+
     def main(self):
         self.socket.listen(MAX_CLIENTS)
         print(f"({time.strftime('%H:%M:%S')}) Server started on {HOST.replace(
@@ -66,10 +69,10 @@ class TCPServer:
         self.clients.append((c_handler, client_thread))
 
     def load_plugins(self):
-        for filename in os.listdir(PLUGIN_DIR):
+        for filename in os.listdir(PLUGINS_DIR):
             if filename.endswith(".py") and not filename.startswith("__"):
                 module_name = filename[:-3]
-                module = importlib.import_module(f"{PLUGIN_DIR}.{module_name}")
+                module = importlib.import_module(f"{PLUGINS_DIR}.{module_name}")
                 if hasattr(module, "Plugin"):
                     plugin = module.Plugin()
                     self.plugins.append(plugin)
@@ -89,3 +92,4 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         print("Server shutting down...")
         srv.stop()
+        input("Press enter to exit.")
