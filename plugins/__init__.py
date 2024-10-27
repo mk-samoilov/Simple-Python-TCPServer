@@ -1,4 +1,7 @@
 class BasePlugin:
+    def server_inited(self):
+        pass
+
     def server_started(self):
         pass
 
