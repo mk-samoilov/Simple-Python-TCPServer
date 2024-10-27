@@ -1,4 +1,7 @@
 import socket, threading, importlib, os, time
+from typing import List, Tuple
+
+from plugins import BasePlugin
 from config import *
 
 class PersonalClientHandler:
@@ -37,8 +40,9 @@ class TCPServer:
         self.handling = True
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.socket.bind((HOST, PORT))
-        self.clients = []
-        self.plugins = []
+
+        self.clients: List[Tuple[PersonalClientHandler, threading.Thread]] = []
+        self.plugins: List[BasePlugin] = []
 
         if LOADING_PLUGINS:
             self.load_plugins()
