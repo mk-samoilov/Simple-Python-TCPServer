@@ -1,6 +1,12 @@
 from plugins import BasePlugin
 
 class Plugin(BasePlugin):
+    def __init__(self):
+        super().__init__()
+
+    def server_inited(self):
+        pass
+
     def server_started(self):
         pass
 
