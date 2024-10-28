@@ -22,7 +22,7 @@ class PersonalClientHandler:
                 if not data:
                     break
 
-                logging.info(f"Client {self.client_address[0]} sent package")
+                logging.info(f"Client {self.client_address[0]} sent package '{data}'")
                 self.process_data(data)
 
             except socket.timeout:
