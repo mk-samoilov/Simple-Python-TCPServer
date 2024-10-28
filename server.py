@@ -124,9 +124,6 @@ class TCPServer:
         except Exception as e:
             logging.error(f"Error in main server loop: {str(e)}")
 
-        finally:
-            self.stop()
-
     def handle_client_connect(self):
         try:
             self.socket.settimeout(1)
@@ -183,5 +180,3 @@ if __name__ == "__main__":
         logging.info("Server shutting down due to keyboard interrupt...")
     finally:
         srv.stop()
-        logging.info("Server has been shut down. Press enter to exit.")
-        input()
