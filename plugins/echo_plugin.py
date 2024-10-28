@@ -1,11 +1,13 @@
 from plugins import BasePlugin
 
 class Plugin(BasePlugin):
+    PLUGIN_NAME = "SimpleEchoPlugin"
+    
     def __init__(self):
         super().__init__()
 
     def server_inited(self):
-        pass
+        fgf
 
     def server_started(self):
         pass
