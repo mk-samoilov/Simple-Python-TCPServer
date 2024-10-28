@@ -88,12 +88,13 @@ class TCPServer:
         for plugin in self.plugins:
             try:
                 plugin.server_inited()
-                try:
-                    os.mkdir(plugin.PLUGIN_DIR)
-                except FileExistsError:
-                    pass
-                except PermissionError:
-                    logging.error(f"Insufficient rights to create plugin folder '{plugin.PLUGIN_DIR}'")
+                if plugin.PLUGIN_DIR:
+                    try:
+                        os.mkdir(plugin.PLUGIN_DIR)
+                    except FileExistsError:
+                        pass
+                    except PermissionError:
+                        logging.error(f"Not have permissions to create plugin folder '{plugin.PLUGIN_DIR}'")
 
             except Exception as e:
                 logging.error(f"Failed to plugin {plugin.PLUGIN_NAME}: {str(e)}")
