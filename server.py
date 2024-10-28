@@ -37,9 +37,9 @@ class PersonalClientHandler:
     def process_data(self, data):
         try:
             for plugin in self.server.plugins:
-                response = str(plugin.process_client_pkg(data))
+                response = plugin.process_client_pkg(data)
                 if response:
-                    self.send_response(response)
+                    self.send_response(str(response))
                     break
             else:
                 self.send_response("None")
