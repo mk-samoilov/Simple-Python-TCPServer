@@ -1,9 +1,11 @@
 class BasePlugin:
+    PLUGIN_NAME = "BasePlugin"
+
     def server_inited(self):
         pass
 
     def server_started(self):
         pass
 
-    def process_client_pkg(self, data):
-        raise NotImplementedError("Subclasses must implement process method")
+    def process_client_pkg(self, data: str) -> str:
+        return ""
