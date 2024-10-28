@@ -1,5 +1,6 @@
 class BasePlugin:
     PLUGIN_NAME = "BasePlugin"
+    PLUGIN_DIR = "BasePlugin"
 
     def server_inited(self):
         pass
