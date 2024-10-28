@@ -1,8 +1,11 @@
-import socket, threading, importlib, os, time
+import socket, threading, importlib, os, logging
 from typing import List, Tuple
 
 from plugins import BasePlugin
 from config import *
+
+
+logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
 class PersonalClientHandler:
     def __init__(self, client_socket, client_address, server):
@@ -17,11 +20,11 @@ class PersonalClientHandler:
             if not data:
                 break
 
-            print(f"({time.strftime('%H:%M:%S')}) Client {self.client_address[0]} send package")
+            logging.info(f"Client {self.client_address[0]} sent package")
             self.process_data(data)
 
         self.client_socket.close()
-        print(f"({time.strftime('%H:%M:%S')}) Client {self.client_address[0]} disconnected")
+        logging.info(f"Client {self.client_address[0]} disconnected")
 
     def process_data(self, data):
         for plugin in self.server.plugins:
@@ -52,7 +55,7 @@ class TCPServer:
 
     def main(self):
         self.socket.listen(MAX_CLIENTS)
-        print(f"({time.strftime('%H:%M:%S')}) Server started on {HOST.replace(
+        logging.info(f"Server started on {HOST.replace(
             '0.0.0.0', 
             socket.gethostbyname(
                 socket.gethostname()
@@ -66,7 +69,7 @@ class TCPServer:
 
     def handle_client_connect(self):
         client_socket, client_address = self.socket.accept()
-        print(f"({time.strftime('%H:%M:%S')}) Connected client from {client_address[0]}")
+        logging.info(f"Connected client from {client_address[0]}")
         c_handler = PersonalClientHandler(client_socket, client_address, self)
         client_thread = threading.Thread(target=c_handler.handle)
         client_thread.start()
@@ -80,7 +83,7 @@ class TCPServer:
                 if hasattr(module, "Plugin"):
                     plugin = module.Plugin()
                     self.plugins.append(plugin)
-                    print(f"({time.strftime('%H:%M:%S')}) Loaded plugin: {module_name}")
+                    logging.info(f"Loaded plugin: {module_name}")
 
     def stop(self):
         self.handling = False
@@ -94,6 +97,6 @@ if __name__ == "__main__":
     try:
         srv.main()
     except KeyboardInterrupt:
-        print("Server shutting down...")
+        logging.info("Server shutting down...")
         srv.stop()
         input("Press enter to exit.")
