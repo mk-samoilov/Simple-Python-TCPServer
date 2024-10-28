@@ -1,5 +1,7 @@
 # TCP Server with Plugin Support
 
+### interesting and useful plugins: https://github.com/mk-samoilov/My-TCPServer-Plugins/
+
 This Python script implements a TCP server that can handle multiple clients concurrently and supports plugins for processing client data. Here's a breakdown of the main components and their functionality:
 
 ## 1. Imports and Configuration
