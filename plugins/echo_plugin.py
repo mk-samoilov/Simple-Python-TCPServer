@@ -2,6 +2,7 @@ from plugins import BasePlugin
 
 class Plugin(BasePlugin):
     PLUGIN_NAME = "SimpleEchoPlugin"
+    PLUGIN_DIR = f"plugins/{PLUGIN_NAME}"
 
     def __init__(self):
         super().__init__()
