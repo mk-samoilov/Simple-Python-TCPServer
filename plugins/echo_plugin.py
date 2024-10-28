@@ -2,7 +2,7 @@ from plugins import BasePlugin
 
 class Plugin(BasePlugin):
     PLUGIN_NAME = "SimpleEchoPlugin"
-    PLUGIN_DIR = f"plugins/{PLUGIN_NAME}"
+    PLUGIN_DIR = None # replace on f"plugins/{PLUGIN_NAME}" to cheating plugin folder
 
     def __init__(self):
         super().__init__()
