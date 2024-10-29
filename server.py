@@ -18,7 +18,7 @@ class PersonalClientHandler:
         while self.running:
             try:
                 self.client_socket.settimeout(30)  # 30 second timeout
-                data = self.client_socket.recv(1024).decode()
+                data = self.client_socket.recv(MAX_DATA_VOLUME).decode()
                 if not data:
                     break
 
