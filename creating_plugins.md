@@ -20,7 +20,7 @@ from plugins import BasePlugin
 
 class Plugin(BasePlugin):
     PLUGIN_NAME = "YourPluginName"
-    PLUGIN_DIR = f"plugins/{PLUGIN_NAME}"
+    PLUGIN_DIR = f"plugins/{PLUGIN_NAME}" # Or None for not creating directory
 
     def __init__(self):
         super().__init__()
