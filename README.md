@@ -2,6 +2,9 @@
 
 ### interesting and useful plugins: https://github.com/mk-samoilov/My-TCPServer-Plugins/
 
+> [!WARNING]
+> By default, you can transfer data in a volume of no more than 1gb (1024mb), but you can increase this volume, since the server and client are open source.
+
 This Python script implements a TCP server that can handle multiple clients concurrently and supports plugins for processing client data. Here's a breakdown of the main components and their functionality:
 
 ## 1. Imports and Configuration
