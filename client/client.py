@@ -1,10 +1,12 @@
 import socket
 
+MAX_DATA_VOLUME = 1024
+
 sock = socket.socket()
 sock.connect(("localhost", 6070))
 sock.send(str(input("Input package: ")).encode())
 
-data = sock.recv(1024).decode()
+data = sock.recv(MAX_DATA_VOLUME).decode()
 sock.close()
 
 print(data)
