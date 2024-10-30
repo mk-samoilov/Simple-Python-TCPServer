@@ -1,5 +1,6 @@
 # TCP Server with Plugin Support
 
+### plugins creating instruction: https://github.com/mk-samoilov/Simple-Python-TCPServer/blob/main/creating_plugins.md
 ### interesting and useful plugins: https://github.com/mk-samoilov/My-TCPServer-Plugins/
 
 > [!WARNING]
