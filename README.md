@@ -1,7 +1,6 @@
 # TCP Server with Plugin Support
 
-### interesting and useful plugins: https://github.com/mk-samoilov/My-TCPServer-Plugins/
-### plugins creating instruction: https://github.com/mk-samoilov/Simple-Python-TCPServer/blob/main/creating_plugins.md
+#### plugins creating instruction: https://github.com/mk-samoilov/Simple-Python-TCPServer/blob/main/creating_plugins.md
 
 > [!WARNING]
 > By default, you can transfer data in a volume of no more than 1gb (1024mb), but you can increase this volume, since the server and client are open source.
